@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.easy</groupId>
+    <artifactId>cloud-alibaba</artifactId>
+    <version>1.0.0</version>
+
+    <modules>
+        <!--配置服务中心(8001)-->
+        <module>ali-nacos-config-server</module>
+        <!--配置客户端1(8002)-->
+        <module>ali-nacos-config-client</module>
+        <!--服务提供者,配置客户端2(9000)-->
+        <module>ali-nacos-provider</module>
+        <!--ribbon消费者,配置客户端3(9100)-->
+        <module>ali-nacos-consumer-ribbon</module>
+        <!--feign消费者(9101)-->
+        <module>ali-nacos-consumer-feign</module>
+        <!--熔断降级消费者(9102)-->
+        <module>ali-nacos-sentinel-feign</module>
+
+        <!--API 模块，存放 Dubbo 服务接口和模型定义-->
+        <module>ali-nacos-dubbo-api</module>
+
+        <!--Dubbo 服务提供方示例(9001)-->
+        <module>ali-nacos-dubbo-provider</module>
+
+        <!--Dubbo 服务消费方示例（9103）-->
+        <module>ali-nacos-dubbo-consumer</module>
+
+        <!-- rocketmq 生产者 (28081) -->
+        <module>ali-rocketmq-producer</module>
+        <!-- rocketmq 消费者 (28082) -->
+        <module>ali-rocketmq-consumer</module>
+    </modules>
+
+    <packaging>pom</packaging>
+    <name>Spring boot cloud alibaba</name>
+    <description>Demo project for Spring Boot</description>
+
+    <parent>
+        <artifactId>spring-boot-demo</artifactId>
+        <groupId>com.easy</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <dubbo.version>2.7.4</dubbo.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Greenwich.SR3</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.2.0.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
